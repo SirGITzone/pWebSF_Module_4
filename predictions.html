@@ -1,0 +1,61 @@
+﻿<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Гороскоп на сегодня</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+        crossorigin="anonymous"
+        />
+        <script
+			  src="http://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			  crossorigin="anonymous">
+        </script>
+        <style>
+        .p0:hover {
+            background: rgb(18, 202, 80)
+        }
+        .p1:hover {
+            background: rgb(241, 113, 184)
+        }
+        .p2:hover {
+            background: rgb(241, 211, 126)
+        }
+        .p3:hover {
+            background: rgb(93, 204, 231)
+        }
+        .p4:hover {
+            background: rgb(224, 94, 33)
+        }
+        .p5:hover {
+            background: rgb(102, 189, 230)
+        }
+        </style>
+    </head>
+    <body>
+        <h1 onclick="pred();" style='text-align: center'>Что сегодняшний день нам готовит?</h1>
+        <div class="container" >
+            <div class="row">
+                <div class="col p0" id="p-0"></div>
+                <div class="col p1" id="p-1"></div>
+                <div class="col p2" id="p-2"></div>
+            </div>
+            <div class="row">
+                <div class="col p3" id="p-3"></div>
+                <div class="col p4" id="p-4"></div>
+                <div class="col p5" id="p-5"></div>
+            </div>
+        </div>
+    </body>
+    <script>
+function set_content_in_divs(predict) {
+  $.each(predict['prophecies'], function(i, d) {
+    p = $("#p-" + i)
+    p.html("<p>" + d + "</p>")
+  })
+}    
+function pred() {
+    $.getJSON('http://sf-pyw.mosyag.in/m04/api/forecasts', set_content_in_divs)
+}
+    </script>
+</html>
